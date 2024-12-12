@@ -12,6 +12,49 @@ pip install st-tools
 
 ## Usage
 
+These examples show how to keep your session state persistent across
+restarts.
+
+### Basic usage
+
+```python
+import streamlit as st
+from st_tools import SessionStateManager
+
+valid_values = [
+    "",
+    "choice 1",
+    "choice 2",
+    "choice 3",
+    "choice 4",
+]
+
+# 1. Create a Session State Manager
+#    with a main key, valid values,
+#    and default:
+config = SessionStateManager(
+    instance_id="unique-name",
+    main_key=("selected_item", "", valid_values),
+	keys=[],
+)
+
+# 2. Use the main key, and save when changing:
+selected_item = st.selectbox(
+    "Pick item:",
+    valid_values,
+    key="selected_item",
+    on_change=config.save
+)
+```
+
+This will keep that last value for "selected_item", even if you
+restart streamlit, or reopen browser tab.
+
+### Advanced usage
+
+With this method, you can have different sets of session states based
+on the value of the "main_key" value.
+
 ```python
 import streamlit as st
 from st_tools import SessionStateManager
@@ -50,10 +93,7 @@ if selected_item:
     pagesize = st.number_input(
         "Page size:", min_value=1, max_value=100, key="pagesize", on_change=config.save
     )
-    print(pagesize)
-
-    # 5. Save the settings
-    config.save()
+    st.write(pagesize)
 ```
 
 If you reload the page, it will keep the session_state keys.
