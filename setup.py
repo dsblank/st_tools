@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-st_utils setup
+st_tools setup
 """
 
 import io
@@ -23,21 +23,21 @@ def get_version(file, name="__version__"):
     return version_ns[name]
 
 
-__version__ = get_version(os.path.join(HERE, "st_utils/_version.py"))
+__version__ = get_version(os.path.join(HERE, "st_tools/_version.py"))
 
 with io.open(os.path.join(HERE, "README.md"), encoding="utf8") as fh:
     long_description = fh.read()
 
 setup_args = dict(
-    name="st_utils",
+    name="st_tools",
     version=__version__,
-    url="https://github.com/dsblank/st_utils",
-    author="st_utils Development Team",
+    url="https://github.com/dsblank/st_tools",
+    author="st_tools Development Team",
     description="Tools for streamlit",
     long_description=long_description,
     long_description_content_type="text/markdown",
     packages=[
-        "st_utils",
+        "st_tools",
     ],
     python_requires=">=3.7",
     license="MIT License",
