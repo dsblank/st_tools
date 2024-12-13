@@ -35,7 +35,7 @@ valid_values = [
 config = SessionStateManager(
     instance_id="unique-name",
     main_key=("selected_item", "", valid_values),
-	keys=[],
+    keys=[],
 )
 
 # 2. Use the main key, and save when changing:
@@ -53,7 +53,7 @@ restart streamlit, or reopen browser tab.
 ### Advanced usage
 
 With this method, you can have different sets of session states based
-on the value of the "main_key" value.
+on the main_key's associated value.
 
 ```python
 import streamlit as st
@@ -95,5 +95,7 @@ if selected_item:
     )
     st.write(pagesize)
 ```
+
+In this example, there will be different sets of settings for each of the values of the main key, namely "choice 1", "choice 2", "choice 3", and "choice 4".
 
 If you reload the page, it will keep the session_state keys.
