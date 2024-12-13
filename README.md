@@ -12,10 +12,14 @@ pip install st-tools
 
 ## Usage
 
+This section describes the tools available in `st-tools`.
+
+### SessionStateManager
+
 These examples show how to keep your session state persistent across
 restarts.
 
-### Basic usage
+#### Basic usage
 
 ```python
 import streamlit as st
@@ -50,7 +54,7 @@ selected_item = st.selectbox(
 This will keep that last value for "selected_item", even if you
 restart streamlit, or reopen browser tab.
 
-### Advanced usage
+#### Advanced usage
 
 With this method, you can have different sets of session states based
 on the main_key's associated value.
